@@ -7,6 +7,8 @@ import Timer from './components/Timer/Timer';
 import Calendars from './components/Calendar/Calendar';
 import Home from './components/Home/home';
 import Notes from './components/Notes/Notes';
+import Footer from "./components/Footer";
+
 
 function App() {
 
@@ -24,6 +26,7 @@ function App() {
       </Routes>
     </Router>
     </div>
+    <Footer></Footer>
     </>
   )
 }
