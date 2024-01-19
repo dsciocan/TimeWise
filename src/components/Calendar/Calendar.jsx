@@ -18,6 +18,8 @@ function Calendars() {
                 end:"dayGridMonth, timeGridWeek, timeGridDay",
                 
              }}
+             height={650}
+             aspectRatio={6}
                 />
         </div>
     );
