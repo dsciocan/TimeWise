@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sidebar, Menu, MenuItem, SubMenu  } from 'react-pro-sidebar';
+import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import { NavLink } from 'react-router-dom';
 
 
