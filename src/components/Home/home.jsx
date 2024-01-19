@@ -1,7 +1,10 @@
+import React from "react"
+import HomeBanner from "../Home-Banner/Home-Banner"
+
 function Home() {
     return (
         <div>
-            <h1>Home Page</h1>
+            <HomeBanner />
         </div>
     )
 }
