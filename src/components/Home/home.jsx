@@ -1,6 +1,5 @@
 import React from "react"
 import HomeBanner from "../Home-Banner/Home-Banner"
-
 import Summary from '../Summary/Summary';
 
 function Home() {
