@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 function SidebarMain () {
 
 return(
-<div className="container-fluid">
+<div className="container-fluid" style={{ display: 'flex', height: '100%', minHeight: '800px'}}>
 <Sidebar>
 <div> 
     <h1>Productivity App</h1>

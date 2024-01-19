@@ -1,9 +1,11 @@
+import React from "react"
+import HomeBanner from "../Home-Banner/Home-Banner"
 import Summary from '../Summary/Summary';
 
 function Home() {
     return (
         <div>
-            <h1>Home Page</h1>
+            <HomeBanner />
             <Summary/>
         </div>
     )
