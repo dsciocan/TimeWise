@@ -8,15 +8,16 @@ import { FaPause } from "react-icons/fa6";
 
 
 function Timer() {
-    let startingMinutes = 25
-    let startingSeconds = 0
+    let startingMinutes = 0
+    let startingSeconds = 10
     const [startTimer, setStartTimer] = useState(false);
     const [pause, setPause] = useState(true);
     const [minutes, setMinutes] = useState(startingMinutes);
     const [seconds, setSeconds] = useState(startingSeconds);
     const [time, setTime] = useState(`${startingMinutes}:0${startingSeconds}`);
     const [study, setStudy] = useState(true);
-
+    let defaultBreakMinutes = 0;
+    let defaultBreakSeconds = 5;
     function togglePlay() {
         setPause(!pause)
         if(pause == true) {
@@ -45,15 +46,26 @@ function Timer() {
         setSeconds(59)
       } else if (seconds > 0) {
         setSeconds(seconds - 1)
-      } 
+      } else if (minutes == 0 && seconds == 0) {
+        setStudy(!study)
+      }
       }, 1000);
       return () => clearInterval(interval);
     }
   }, [minutes, seconds, startTimer]);
 
-    useEffect(() => {
 
-    }, [minutes, seconds, startTimer])
+  useEffect(()=> {
+    if(study) {
+      setMinutes(startingMinutes)
+      setSeconds(startingSeconds)
+    } else {
+      setMinutes(defaultBreakMinutes);
+      setSeconds(defaultBreakSeconds)
+    }
+  }, [study])
+
+
 
 
 //   const displayTime = () => {
@@ -74,6 +86,7 @@ function Timer() {
         <h4>Press <FaPlay /> to start </h4>
         <h4>Or set your desired session length by pressing the <IoMdSettings /> button</h4>
         <Box fontSize={"256px"}>{time}</Box>
+        {study ? <h5>Work Time</h5> : <h5>Break Time</h5>}
         <Box
           display={"flex"}
           flexDirection={"row"}
