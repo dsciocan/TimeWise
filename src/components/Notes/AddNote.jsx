@@ -1,11 +1,17 @@
 import { useState, useId } from "react";
 
 const AddNote = ({ handleAddNote }) => {
-  // initial ID
+  // Initial Id
   const id = useId();
 
+  // Create a unique ID from the initial Id
+  const [index, setIndex] = useState(0);
 
-  
+  const [noteText, setNoteText] = useState("");
+  const characterLimit = 200;
+
+
+
 
 };
 
