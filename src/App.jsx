@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 // import './App.css'
-import SidebarMain from './components/sidebar/Sidebar'
+import SidebarMain from './components/Sidebar/Sidebar'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Timer from './components/Timer/Timer';
 import Calendars from './components/Calendar/Calendar';

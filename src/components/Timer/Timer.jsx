@@ -1,23 +1,29 @@
-import { React, useState, useEffect } from "react"
+import { React, useState, useEffect, createContext, useContext } from "react"
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import { FaPlay } from "react-icons/fa";
 import { IoMdSettings } from "react-icons/io";
 import { FaPause } from "react-icons/fa6";
+import Settings from "./Timer-settings";
 
-
+export const MinutesContext = createContext();
+export const BreakContext = createContext();
 
 function Timer() {
-    let startingMinutes = 0
-    let startingSeconds = 10
+    let startingMinutes = 25
+    let startingSeconds = 0
     const [startTimer, setStartTimer] = useState(false);
     const [pause, setPause] = useState(true);
     const [minutes, setMinutes] = useState(startingMinutes);
     const [seconds, setSeconds] = useState(startingSeconds);
-    const [time, setTime] = useState(`${startingMinutes}:0${startingSeconds}`);
+    const [time, setTime] = useState(`${minutes}:0${seconds}`);
     const [study, setStudy] = useState(true);
-    let defaultBreakMinutes = 0;
-    let defaultBreakSeconds = 5;
+    const [modalShow, setModalShow] = useState(false);
+
+    
+    let defaultBreakMinutes = 5;
+    let defaultBreakSeconds = 0;
+
     function togglePlay() {
         setPause(!pause)
         if(pause == true) {
@@ -26,8 +32,6 @@ function Timer() {
             setStartTimer(false);
         }
     }
-
-
 
     useEffect(() => {
     if(seconds < 10 && minutes < 10) {
@@ -55,32 +59,21 @@ function Timer() {
   }, [minutes, seconds, startTimer]);
 
 
-  useEffect(()=> {
-    if(study) {
-      setMinutes(startingMinutes)
-      setSeconds(startingSeconds)
-    } else {
-      setMinutes(defaultBreakMinutes);
-      setSeconds(defaultBreakSeconds)
-    }
-  }, [study])
+  // useEffect(()=> {
+  //   if(study) {
+  //     setMinutes(minutes)
+  //     setSeconds(startingSeconds)
+  //   } else {
+  //     setMinutes(defaultBreakMinutes);
+  //     setSeconds(defaultBreakSeconds)
+  //   }
+  // }, [study])
 
 
 
-
-//   const displayTime = () => {
-
-//   }
-//   const [currentFlowIndex, setCurrentFlowIndex] = useState(0);
-//   const [state, setState] = useState(STATE_FLOW[currentFlowIndex]); 
-
-//     const handleSetState = () => {
-//     setCurrentFlowIndex(currentFlowIndex + 1);
-//     currentFlowIndex === STATE_FLOW.length - 1 && setCurrentFlowIndex(0);
-
-//     setState(STATE_FLOW[currentFlowIndex]);
-//   };
     return (
+      <MinutesContext.Provider value={[minutes, setMinutes]}>
+      <BreakContext.Provider value={study}>
         <Box display={"flex"} flexDirection={"column"} justifyContent={"center"}>
         <h2>Pomodoro Timer</h2>
         <h4>Press <FaPlay /> to start </h4>
@@ -95,9 +88,13 @@ function Timer() {
         >
           {/* <Settings>Settings</Settings> */}
           {pause ? <Button variant="contained" onClick={togglePlay}><FaPlay /></Button> : <Button variant="contained" onClick={togglePlay}><FaPause /></Button>}
-          <Button variant="contained"><IoMdSettings /></Button>
+          <Button variant="contained" onClick={() => setModalShow(true)}><IoMdSettings /></Button>
+          <Settings show={modalShow} onHide={() => setModalShow(false)} />
         </Box>
       </Box>
+      </BreakContext.Provider>
+      </MinutesContext.Provider>
+      
     )
 }
 
