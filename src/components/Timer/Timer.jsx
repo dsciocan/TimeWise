@@ -8,6 +8,8 @@ import Settings from "./Timer-settings";
 
 export const MinutesContext = createContext();
 export const BreakContext = createContext();
+export const StartContext = createContext();
+export const SecondsContext = createContext();
 
 function Timer() {
     let startingMinutes = 25
@@ -43,6 +45,7 @@ function Timer() {
     } else {
         setTime(`${minutes}:${seconds}`)
     }
+
     if (startTimer) {
       const interval = setTimeout(() => {
       if(minutes > 0 && seconds === 0) {
@@ -74,6 +77,8 @@ function Timer() {
     return (
       <MinutesContext.Provider value={[minutes, setMinutes]}>
       <BreakContext.Provider value={study}>
+      <StartContext.Provider value={[[startTimer, setStartTimer]]}>
+      <SecondsContext.Provider value={seconds}>
         <Box display={"flex"} flexDirection={"column"} justifyContent={"center"}>
         <h2>Pomodoro Timer</h2>
         <h4>Press <FaPlay /> to start </h4>
@@ -92,6 +97,8 @@ function Timer() {
           <Settings show={modalShow} onHide={() => setModalShow(false)} />
         </Box>
       </Box>
+      </SecondsContext.Provider>
+      </StartContext.Provider>
       </BreakContext.Provider>
       </MinutesContext.Provider>
       

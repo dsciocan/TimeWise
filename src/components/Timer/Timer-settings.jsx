@@ -7,7 +7,7 @@ import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
 import RangeSlider from 'react-bootstrap-range-slider';
 import { set } from "date-fns";
-import { BreakContext, MinutesContext } from "./Timer";
+import { BreakContext, MinutesContext, StartContext, SecondsContext } from "./Timer";
 
 
 function Settings(props) {
@@ -16,8 +16,10 @@ function Settings(props) {
     const [ sessionNo, setSessionNo ] = useState(1);
     const [longBreak, setLongBreak] = useState(false);
     const [ minutes, setMinutes] = useContext(MinutesContext)
+    const seconds = useContext(SecondsContext);
     const focusMode = useContext(BreakContext)
-
+    const [startTimer, setStartTimer] = useContext(StartContext)
+    const sessionCounter = 0  
 
     useEffect(() => {
         if(sessionNo == 4) {
@@ -37,10 +39,20 @@ function Settings(props) {
             setMinutes(workValue)
         } else if (longBreak) {
             setMinutes(15)
+            sessionCounter++
         } else {
             setMinutes(breakValue)
+            sessionCounter++
         }
 }, [focusMode])
+
+
+useEffect(() => {
+    if(sessionCounter == sessionNo && minutes == 0 && seconds == 0) {
+        setStartTimer(false)
+        sessionCounter = 0
+    }
+}, [minutes, focusMode, seconds])
 
     //carry variables for work time, break time and no to timer component and update timer based on input
 
