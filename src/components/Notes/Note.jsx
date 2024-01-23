@@ -3,7 +3,7 @@ const Note = ({ id, text, date, handleDeleteNote }) => {
     <div className="note">
       <span>{text}</span>
       <div className="note-footer">
-      <small>{date}</small>
+        <small>{date}</small>
         <button onClick={() => handleDeleteNote(id)}>Del</button>
       </div>
     </div>
