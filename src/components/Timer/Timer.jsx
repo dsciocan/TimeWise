@@ -58,6 +58,8 @@ function Timer() {
       }
       }, 1000);
       return () => clearInterval(interval);
+    } else {
+      setPause(true)
     }
   }, [minutes, seconds, startTimer]);
 
@@ -77,7 +79,7 @@ function Timer() {
     return (
       <MinutesContext.Provider value={[minutes, setMinutes]}>
       <BreakContext.Provider value={study}>
-      <StartContext.Provider value={[[startTimer, setStartTimer]]}>
+      <StartContext.Provider value={[startTimer, setStartTimer]}>
       <SecondsContext.Provider value={seconds}>
         <Box display={"flex"} flexDirection={"column"} justifyContent={"center"}>
         <h2>Pomodoro Timer</h2>

@@ -19,15 +19,15 @@ function Settings(props) {
     const seconds = useContext(SecondsContext);
     const focusMode = useContext(BreakContext)
     const [startTimer, setStartTimer] = useContext(StartContext)
-    const sessionCounter = 0  
+    const [sessionCounter, setSessionCounter] = useState(0) 
 
     useEffect(() => {
-        if(sessionNo == 4) {
+        if(sessionCounter == 3) {
             setLongBreak(true)
         } else {
             setLongBreak(false)
         }
-    }, [sessionNo])
+    }, [sessionCounter])
     
     const changeMinutes = (e) => {
         e.preventDefault()
@@ -39,22 +39,23 @@ function Settings(props) {
             setMinutes(workValue)
         } else if (longBreak) {
             setMinutes(15)
-            sessionCounter++
+            setSessionCounter(sessionCounter => sessionCounter + 1)
         } else {
             setMinutes(breakValue)
-            sessionCounter++
+            setSessionCounter(sessionCounter => sessionCounter + 1)
+            console.log(sessionCounter)
+            console.log(sessionNo)
         }
 }, [focusMode])
 
 
-useEffect(() => {
-    if(sessionCounter == sessionNo && minutes == 0 && seconds == 0) {
-        setStartTimer(false)
-        sessionCounter = 0
-    }
-}, [minutes, focusMode, seconds])
+    useEffect(() => {
+        if(sessionCounter == sessionNo && minutes == 0 && seconds == 0) {
+            setStartTimer(false)
+            setSessionCounter(0)
+        }
+    }, [minutes, focusMode, seconds])
 
-    //carry variables for work time, break time and no to timer component and update timer based on input
 
   return (
 
@@ -76,13 +77,13 @@ useEffect(() => {
           <Row>
             <Col xs={12} md={8}>
             <Form.Label>Work Session Time (minutes)</Form.Label>
-            <RangeSlider min={20} max={30} value={workValue}  onChange={e => setWorkValue(e.target.value)} tooltip='auto'/>
+            <RangeSlider min={1} max={30} value={workValue}  onChange={e => setWorkValue(e.target.value)} tooltip='auto'/>
             </Col>
           </Row>
           <Row>
             <Col xs={12} md={8}>
             <Form.Label>Break Time (minutes)</Form.Label>
-            <RangeSlider min={3} max={7} value={breakValue}  onChange={e => setBreakValue(e.target.value)} tooltip='auto'/>
+            <RangeSlider min={1} max={7} value={breakValue}  onChange={e => setBreakValue(e.target.value)} tooltip='auto'/>
             </Col>
           </Row>
           <Row>
