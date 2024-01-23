@@ -1,10 +1,12 @@
 import { React, useState, useEffect, createContext, useContext } from "react"
 import Button from "@mui/material/Button";
+import { IconButton } from "@mui/material";
 import Box from "@mui/material/Box";
 import { FaPlay } from "react-icons/fa";
 import { IoMdSettings } from "react-icons/io";
 import { FaPause } from "react-icons/fa6";
 import Settings from "./Timer-settings";
+import SavedSessions from "./SavedSessions";
 
 export const MinutesContext = createContext();
 export const BreakContext = createContext();
@@ -80,7 +82,7 @@ function Timer() {
       <MinutesContext.Provider value={[minutes, setMinutes]}>
       <BreakContext.Provider value={study}>
       <StartContext.Provider value={[startTimer, setStartTimer]}>
-      <SecondsContext.Provider value={seconds}>
+      <SecondsContext.Provider value={[seconds, setSeconds]}>
         <Box display={"flex"} flexDirection={"column"} justifyContent={"center"}>
         <h2>Pomodoro Timer</h2>
         <h4>Press <FaPlay /> to start </h4>
@@ -94,10 +96,13 @@ function Timer() {
           gap={"20px"}
         >
           {/* <Settings>Settings</Settings> */}
-          {pause ? <Button variant="contained" onClick={togglePlay}><FaPlay /></Button> : <Button variant="contained" onClick={togglePlay}><FaPause /></Button>}
-          <Button variant="contained" onClick={() => setModalShow(true)}><IoMdSettings /></Button>
+          {pause ? <IconButton aria-label="play" color="primary" onClick={togglePlay}><FaPlay /></IconButton> : <IconButton aria-label="pause" color="primary" onClick={togglePlay}><FaPause /></IconButton>}
+          <IconButton aria-label="settings" color="primary" onClick={() => setModalShow(true)}><IoMdSettings /></IconButton>
           <Settings show={modalShow} onHide={() => setModalShow(false)} />
         </Box>
+      </Box>
+      <Box>
+      {/* <SavedSessions/> */}
       </Box>
       </SecondsContext.Provider>
       </StartContext.Provider>
