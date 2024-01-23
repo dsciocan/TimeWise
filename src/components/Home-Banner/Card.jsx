@@ -9,7 +9,7 @@ function HomeCard(props) {
     <a href={`/${props.link}`}>
     <Card className="bg-dark text-white">
         <Card.Img src={props.img} alt="Card image" height={350}/>
-        <Card.ImgOverlay className="card-img-overlay bg-dark opacity-50">
+        <Card.ImgOverlay className="card-img-overlay bg-dark opacity-75">
             <Card.Title>{props.title}</Card.Title>
             <Card.Text>
             {props.desc}

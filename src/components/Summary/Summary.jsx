@@ -52,10 +52,10 @@ useEffect(() =>{
     return (
       <div>
         <h1 className="text-center">Welcome!</h1>
-        <p>
+        <p className='text-center'>
           Start adding events to your calendar to receive personalised reminders here.
         </p>
-        <div className='row'>
+        <div className='row d-flex justify-content-center'>
         <div className="col-lg-6">
           <h5>Today's Useless Fact</h5>
           <p>{fact}</p>
