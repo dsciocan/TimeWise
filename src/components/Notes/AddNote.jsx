@@ -4,7 +4,7 @@ const AddNote = ({ handleAddNote }) => {
   // Initial Id
   const id = useId();
 
-  // Create a unique Id from the initial Id
+  // Create a unique ID from the initial Id
   const [index, setIndex] = useState(0);
 
   const [noteText, setNoteText] = useState("");
@@ -20,14 +20,28 @@ const AddNote = ({ handleAddNote }) => {
     if (noteText.trim().length > 0) {
       handleAddNote(noteText, id + index);
       setNoteText("");
-      // A unique Id in each save event
+      // A unique ID in each save event
       setIndex(index + 1);
     }
   };
 
-
-
-
+  return (
+    <div className="note new">
+      <textarea
+        id={id + index}
+        rows="8"
+        cols="10"
+        placeholder="Type to add a note..."
+        value={noteText}
+        onChange={handleChange}></textarea>
+      <div className="note-footer">
+        <small>{characterLimit - noteText.length} Remaining</small>
+        <button className="save" onClick={handleSaveClick}>
+          Save
+        </button>
+      </div>
+    </div>
+  );
 };
 
 export default AddNote;
