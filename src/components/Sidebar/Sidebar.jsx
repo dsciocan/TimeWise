@@ -1,6 +1,12 @@
 import React from 'react';
 import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import { NavLink } from 'react-router-dom';
+import { MdOutlineTimer } from "react-icons/md";
+import { FaNoteSticky } from "react-icons/fa6";
+import { FaCalendarCheck } from "react-icons/fa";
+import { IoHome } from "react-icons/io5";
+
+
 
 
 function SidebarMain () {
@@ -19,8 +25,7 @@ return(
             isActive ? 'nav-link active' : 'nav-link'
           }
         >
-    <MenuItem>
-     Home 
+    <MenuItem> <IoHome /> Home 
      </MenuItem>
      </NavLink>
      <NavLink
@@ -30,7 +35,7 @@ return(
           }
         >
     <MenuItem>
-    Timer
+    <MdOutlineTimer /> Timer
     </MenuItem>
     </NavLink>
     <NavLink
@@ -39,7 +44,7 @@ return(
             isActive ? 'nav-link active' : 'nav-link'
           }
         >
-    <MenuItem> Notes </MenuItem>
+    <MenuItem><FaNoteSticky /> Notes </MenuItem>
     </NavLink>
     <NavLink
           to="calendar"
@@ -47,7 +52,7 @@ return(
             isActive ? 'nav-link active' : 'nav-link'
           }
         >
-    <MenuItem> Calendar </MenuItem>
+    <MenuItem> <FaCalendarCheck /> Calendar </MenuItem>
     </NavLink>
   </Menu>
 </Sidebar>

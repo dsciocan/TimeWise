@@ -1,0 +1,10 @@
+h2 {
+    text-align: center;
+}
+
+@media only screen and (max-width: 800px) {
+    #timer {
+        font-size: 150px;
+    }
+  }
+
