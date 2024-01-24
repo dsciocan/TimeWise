@@ -1,0 +1,37 @@
+.history-text {
+    color: rgb(0, 18, 103);
+    font-weight: 450;
+    font-size: 25px;;
+}
+
+.history-list {
+    list-style: none;
+}
+
+.history-items {
+    color: rgb(0, 18, 103);
+    font-weight: 400;
+    margin-top: 15px;
+    word-spacing: 10px;
+    font-size: 18px;
+}
+
+td {
+    text-align: center;
+}
+
+thead {
+    color: rgb(0, 18, 103);
+    font-weight: 400;
+    margin-top: 15px;
+    font-size: 18px;
+    text-align: center;
+}
+
+tbody {
+    color: rgb(0, 18, 103);
+    font-weight: 400;
+    margin-top: 15px;
+    text-align: center;
+}
+

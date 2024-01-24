@@ -1,8 +1,8 @@
 import {React, useState, useEffect, useContext} from "react";
 import Accordion from 'react-bootstrap/Accordion';
-
+import { Table } from "react-bootstrap";
 import { BreakContext } from "./Timer";
-
+import "./saved-sessions.css"
 
 
 function SavedSessions() {
@@ -19,7 +19,13 @@ const displaySessions = []
         if(savedSessions != null) { 
         savedSessions.forEach((el) => {
           displaySessions.push(
-            <li>{el.id}.       Sessions: {el.sessions}        Summary: {el.name}</li>
+              <tr>
+                <td>{el.id}</td>
+                <td>{el.sessions}</td>
+                <td>{el.name}</td>
+              </tr>
+
+            // <li className="history-items">{el.id}.      Sessions:     |    Summary: </li>
           )
 
 })
@@ -30,12 +36,21 @@ console.log(displaySessions)
 
     return(
         <Accordion>
-        <Accordion.Item eventKey="1">
-          <Accordion.Header>Previous Sessions</Accordion.Header>
+        <Accordion.Item eventKey="1" class="history">
+          <Accordion.Header><h4 className="history-text">Previous Sessions</h4></Accordion.Header>
           <Accordion.Body>
-            <ul>
-                {displaySessions}
-            </ul>
+          <Table bordered className="table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Number of sessions</th>
+                <th>Summary</th>
+              </tr>
+            </thead>
+            <tbody>
+            {displaySessions}
+            </tbody>
+          </Table>
           </Accordion.Body>
         </Accordion.Item>
         </Accordion>

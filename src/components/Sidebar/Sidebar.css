@@ -1,5 +1,5 @@
 #side-button {
-    color: rgb(4, 114, 77);
+    color: rgb(0, 18, 103);
     font-size: 20px;
 }
 
@@ -11,4 +11,16 @@
 
 .sidebar {
     color: rgb(45, 48, 71);
+    
+}
+
+.menu-item {
+    color: rgb(0, 18, 103);
+}
+
+.sidebar h1 {
+    background-color: rgb(230, 249, 255);
+    color: rgb(0, 18, 103);
+    font-weight: 450;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }

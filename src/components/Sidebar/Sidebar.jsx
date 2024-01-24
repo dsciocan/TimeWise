@@ -21,8 +21,8 @@ function SidebarMain () {
 return(
 <div className="container-fluid" style={{ display: 'flex', height: '100%', minHeight: '800px'}}>
 <Sidebar className="sidebar" collapsed={collapsed} rootStyles={{
-          background:'linear-gradient(180deg, rgb(4, 114, 77) 30%, rgb(168, 229, 186) 60%, rgb(230,252,255) 100%)',}}>
-<Button id="side-button" size="large" variant="outlined" color="success" onClick={() => setCollapsed(!collapsed)}>
+          background:'linear-gradient(180deg,  #258EB2 20%, rgb(26, 78, 186) 50%, rgb(0, 18, 103) 100%)',}}>
+<Button id="side-button" size="large" variant="outlined" color="primary" onClick={() => setCollapsed(!collapsed)}>
 <GiHamburgerMenu />
 </Button>
 <div> 
@@ -36,7 +36,7 @@ return(
             isActive ? 'nav-link active' : 'nav-link'
           }
         >
-    <MenuItem> <IoHome /> Home 
+    <MenuItem className="menu-item"> <IoHome /> Home 
      </MenuItem>
      </NavLink>
      <NavLink
@@ -45,7 +45,7 @@ return(
             isActive ? 'nav-link active' : 'nav-link'
           }
         >
-    <MenuItem>
+    <MenuItem className="menu-item">
     <MdOutlineTimer /> Timer
     </MenuItem>
     </NavLink>
@@ -55,7 +55,7 @@ return(
             isActive ? 'nav-link active' : 'nav-link'
           }
         >
-    <MenuItem><FaNoteSticky /> Notes </MenuItem>
+    <MenuItem className="menu-item"><FaNoteSticky /> Notes </MenuItem>
     </NavLink>
     <NavLink
           to="calendar"
@@ -63,7 +63,7 @@ return(
             isActive ? 'nav-link active' : 'nav-link'
           }
         >
-    <MenuItem> <FaCalendarCheck /> Calendar </MenuItem>
+    <MenuItem className="menu-item"> <FaCalendarCheck /> Calendar </MenuItem>
     </NavLink>
   </Menu>
 </Sidebar>
