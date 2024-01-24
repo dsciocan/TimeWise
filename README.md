@@ -1,6 +1,6 @@
 # TimeWise
 
-TimeWise becomes your trusted companion, making your workdays a breeze as it effortlessly helps you organise, create, and stay focused. It's like having a productivity sidekick that understands your needs and enhances your daily grind.
+Maximise your time with TimeWise, the React app designed for peak productivity, featuring a Pomodoro timer, seamless note capture, and a robust calendar function. Wise up with TimeWise!
 
 ## Table of Contents:
 * [Summary](#summary)
@@ -31,17 +31,17 @@ TimeWise becomes your trusted companion, making your workdays a breeze as it eff
 ### Installation
 
 * [Node JS](https://nodejs.org/en/download/) and required dependencies need to be installed on your computer.
-* Please click [here](https://github.com/dsciocan/Project2) to view our project.    ** update this **
+* Please click [here](https://time-wise.netlify.app) to view our project.
 
 
 ## Usage:
 ##### You can see the preview below
 
+<img width="894" alt="timer" src="https://github.com/dsciocan/TimeWise/assets/129904894/bf0130f1-bba2-4a8a-9065-492b33843c0b">
 
-![Untitled2](https://github.com/dsciocan/Project2/assets/129904894/7943f678-9d2b-4588-b602-d1a6a89b6edd)
+<img width="894" alt="sticky" src="https://github.com/dsciocan/TimeWise/assets/129904894/ef0b8975-b4cc-4cdd-9173-4cc5dea7277a">
 
-
-<img width="956" alt="Untitled" src="https://github.com/dsciocan/Project2/assets/129904894/69688ea1-38bf-4d6a-890a-3f079515993a">
+<img width="894" alt="calendar" src="https://github.com/dsciocan/TimeWise/assets/129904894/114fa150-ae0c-4788-bb36-de14a9aa2392">
 
 
 ### License:
