@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Modal from 'react-modal';
 import FullCalendar from '@fullcalendar/react'
 import daygridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from "@fullcalendar/timegrid"
 import interactionPlugin from "@fullcalendar/interaction";
+import * as bootstrap from 'bootstrap'
+import "bootstrap/dist/css/bootstrap.min.css"
 import { useState } from "react";
 import { v4 as uuid } from "uuid";
 
@@ -29,25 +32,35 @@ function Calendars() {
           ]);
         }
       };
+      
+
+    
     return (
         <div id='full-calendar'>
-            <FullCalendar 
+
+          
+            <FullCalendar
             editable
             selectable
             events={events}
             select={handleSelect}
-            plugins={[daygridPlugin, timeGridPlugin,interactionPlugin]}
-             initialView='dayGridMonth'
-             headerToolbar={{
-                start:"today prev next",
-                center:"title",
-                end:"dayGridMonth, timeGridWeek, timeGridDay",
-             }}
+            headerToolbar={{
+                start: "today prev next",
+                end: "dayGridMonth dayGridWeek dayGridDay",
+            }}
+            plugins={[daygridPlugin, interactionPlugin]}
+            views={["dayGridMonth", "dayGridWeek", "dayGridDay"]}
+            
              
              height={650}
              aspectRatio={6}
+
              
-            />
+             />
+             
+             
+
+            
         </div>
 
         
@@ -56,8 +69,20 @@ function Calendars() {
 
 
 
+
+
+                
+
+
+
+
+
+
+
+
+
+
+
+// }
+
 export default Calendars;
-
-
-
-
