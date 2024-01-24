@@ -13,7 +13,7 @@ import StickyBox from 'react-sticky-box';
 function App() {
   return (
     <>
-    <div className='container d-flex flex-row justify-content-start align-items-start'>
+    <div className='container-fluid d-flex flex-row justify-content-start align-items-start'>
       <Router>
       <StickyBox><SidebarMain/></StickyBox>
       <Routes>
