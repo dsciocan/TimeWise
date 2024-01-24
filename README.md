@@ -41,7 +41,8 @@ Maximise your time with TimeWise, the React app designed for peak productivity, 
 
 <img width="894" alt="sticky" src="https://github.com/dsciocan/TimeWise/assets/129904894/ef0b8975-b4cc-4cdd-9173-4cc5dea7277a">
 
-<img width="894" alt="calendar" src="https://github.com/dsciocan/TimeWise/assets/129904894/114fa150-ae0c-4788-bb36-de14a9aa2392">
+<img width="894" alt="calendar" src="https://github.com/dsciocan/TimeWise/assets/129904894/fc927599-cf47-49c9-beb8-bc414ae16ee1">
+
 
 
 ### License:
