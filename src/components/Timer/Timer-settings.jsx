@@ -48,7 +48,6 @@ const changeMinutes = (e) => {
             sessions: sessionNo
         }
             sessionHistory.push(session)
-            console.log(sessionHistory)
             localStorage.setItem('savedSessions', JSON.stringify(sessionHistory))
     }
 
@@ -61,8 +60,6 @@ useEffect(() => {
         } else {
             setMinutes(breakValue)
             setSessionCounter(sessionCounter => sessionCounter + 1)
-            console.log(sessionCounter)
-            console.log(sessionNo)
         }
 }, [focusMode])
 

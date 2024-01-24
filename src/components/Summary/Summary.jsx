@@ -15,13 +15,11 @@ useEffect(() =>{
       const { latitude, longitude } = position.coords;
       axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=0197cf67ab7a13595738a77d2d43edd2`)
       .then(function (response) {
-        console.log(response);
         const dataPath = response.data
         const celsus = Math.round(dataPath.main.temp - 273)
         setWeather({icon: `https://openweathermap.org/img/wn/${dataPath.weather[0].icon}@2x.png`, temperature: celsus})
       })
       .catch(function (error) {
-        console.log(error);
       })    
       .finally(function () {
         return
@@ -38,16 +36,11 @@ useEffect(() =>{
     function uselessFact() {
       axios.get('https://uselessfacts.jsph.pl/api/v2/facts/today')
       .then(function (response) {
-        console.log(response);
         setFact(response.data.text)
       })
       .catch(function (error) {
-        // handle error
-        console.log(error);
       })
-      .finally(function () {
-        // always executed
-      });
+
     }
     uselessFact()
     return (
@@ -61,7 +54,7 @@ useEffect(() =>{
           <h4>Today's Useless Fact</h4>
           <p>{fact}</p>
         </div>
-        {successGet ? <div className='col-lg-4 col-sm-12'>
+        {successGet ? <div className='col-lg-4 col-sm-8'>
             <h4>Your Weather</h4>
             <div className='d-flex align-items-center'>
             <img src={weather.icon}/>

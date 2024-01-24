@@ -67,15 +67,6 @@ function Timer() {
   }, [minutes, seconds, startTimer]);
 
 
-  // useEffect(()=> {
-  //   if(study) {
-  //     setMinutes(minutes)
-  //     setSeconds(startingSeconds)
-  //   } else {
-  //     setMinutes(defaultBreakMinutes);
-  //     setSeconds(defaultBreakSeconds)
-  //   }
-  // }, [study])
 
 
 
