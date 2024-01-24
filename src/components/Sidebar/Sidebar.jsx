@@ -7,6 +7,8 @@ import { FaCalendarCheck } from "react-icons/fa";
 import { IoHome } from "react-icons/io5";
 import { Button } from '@mui/material';
 import { GiHamburgerMenu } from "react-icons/gi";
+import "./Sidebar.css"
+
 
 
 
@@ -18,14 +20,15 @@ function SidebarMain () {
   const [collapsed, setCollapsed] = useState(false);
 return(
 <div className="container-fluid" style={{ display: 'flex', height: '100%', minHeight: '800px'}}>
-<Sidebar collapsed={collapsed}>
-<Button variant="outlined" onClick={() => setCollapsed(!collapsed)}>
+<Sidebar className="sidebar" collapsed={collapsed} rootStyles={{
+          background:'linear-gradient(180deg, rgb(4, 114, 77) 30%, rgb(168, 229, 186) 60%, rgb(230,252,255) 100%)',}}>
+<Button id="side-button" size="large" variant="outlined" color="success" onClick={() => setCollapsed(!collapsed)}>
 <GiHamburgerMenu />
 </Button>
 <div> 
     <h1>Productivity App</h1>
 </div>
-  <Menu>
+  <Menu className="sidebar-menu">
   <NavLink
           to="/"
           end
