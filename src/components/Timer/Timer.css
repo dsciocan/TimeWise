@@ -2,9 +2,50 @@ h2 {
     text-align: center;
 }
 
+#timer {
+    color: rgb(0, 18, 103);
+    font-weight:300;
+}
+
+#timer-text {
+    color: rgb(0, 18, 103);
+    padding: 20px;
+}
+
+#timer-text h2 {
+    margin-top: 30px;
+    font-size: 45px;
+    font-weight: 500;
+}
+
+#timer-text h4{
+    font-weight: 400;
+    padding: 3px;
+}
+
+#timer-text h3 {
+    color: rgb(0, 18, 103);
+    font-weight: 500;
+}
+
+.icon-button {
+    color: rgb(0, 18, 103);
+}
+
+.saved-sessions {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
 @media only screen and (max-width: 800px) {
     #timer {
         font-size: 150px;
     }
   }
 
+
+  @media only screen and (max-width: 500px) {
+    #timer {
+        font-size: 90px;
+    }
+  }

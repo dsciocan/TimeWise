@@ -2315,6 +2315,11 @@ react-router@6.21.2:
   dependencies:
     "@remix-run/router" "1.14.2"
 
+react-sticky-box@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.npmjs.org/react-sticky-box/-/react-sticky-box-2.0.5.tgz"
+  integrity sha512-JEIuN7Q3razU1NNS0vddC12GXCUkj7T4aCpC9ZSTjgBddFsBdTcN1RhYXFLjCE/KDOQqX2Ix308BcdrqtSJbkQ==
+
 react-transition-group@^4.4.5:
   version "4.4.5"
   resolved "https://registry.npmjs.org/react-transition-group/-/react-transition-group-4.4.5.tgz"

@@ -1,0 +1,33 @@
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 20px
+}
+
+#card-text {
+    font-size: 20px;
+    font-weight: 350;
+    color: rgb(227, 238, 248);
+}
+
+#card-title {
+    font-size: 20px;
+    font-weight: 350;
+    color: rgb(227, 238, 248);
+}
+
+
+@media only screen and (max-width: 500px) {
+    .feature-img {
+        height: 30vh
+    }
+    .card {
+        height: 30vh;
+        width: 150px;
+    }
+    .card-img-overlay {
+        height: 30vh
+    }
+    #card-text {
+        font-size: 15px;
+    }
+}

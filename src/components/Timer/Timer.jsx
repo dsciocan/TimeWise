@@ -67,27 +67,19 @@ function Timer() {
   }, [minutes, seconds, startTimer]);
 
 
-  // useEffect(()=> {
-  //   if(study) {
-  //     setMinutes(minutes)
-  //     setSeconds(startingSeconds)
-  //   } else {
-  //     setMinutes(defaultBreakMinutes);
-  //     setSeconds(defaultBreakSeconds)
-  //   }
-  // }, [study])
 
 
 
     return (
-      <Box display={"flex"}
-      flexDirection={"row"}
-      justifyContent={"center"}>
+
       <MinutesContext.Provider value={[minutes, setMinutes]}>
       <BreakContext.Provider value={study}>
       <StartContext.Provider value={[startTimer, setStartTimer]}>
       <SecondsContext.Provider value={[seconds, setSeconds]}>
-        <Box display={"flex"} flexDirection={"column"} justifyContent={"center"}>
+      <Box display={"flex"}
+      flexDirection={"row"}
+      justifyContent={"center"}>
+        <Box display={"flex"} flexDirection={"column"} justifyContent={"center"} id="timer-text">
         <h2>Pomodoro Timer</h2>
         <h4>Press <FaPlay /> to start </h4>
         <h4>Or set your desired session length by pressing the <IoMdSettings /> button</h4>
@@ -99,19 +91,22 @@ function Timer() {
           gap={"20px"}
         >
           {study ? <h3>Work Time</h3> : <h3>Break Time</h3>}
-          {pause ? <IconButton aria-label="play" color="primary" onClick={togglePlay}><FaPlay /></IconButton> : <IconButton aria-label="pause" color="primary" onClick={togglePlay}><FaPause /></IconButton>}
-          <IconButton aria-label="settings" color="primary" onClick={() => setModalShow(true)}><IoMdSettings /></IconButton>
+          {pause ? <IconButton aria-label="play" color="primary" className="icon-button" onClick={togglePlay}><FaPlay /></IconButton> : <IconButton aria-label="pause" className="icon-button"  color="primary" onClick={togglePlay}><FaPause /></IconButton>}
+          <IconButton aria-label="settings" color="primary" className="icon-button" onClick={() => setModalShow(true)}><IoMdSettings /></IconButton>
           <Settings show={modalShow} onHide={() => setModalShow(false)} />
         </Box>
+      </Box>      
       </Box>
-      <Box>
-      {/* <SavedSessions/> */}
+      <Box display={"flex"}
+      flexDirection={"row"}
+      justifyContent={"center"} className="saved-sessions">
+      <SavedSessions/>
       </Box>
       </SecondsContext.Provider>
       </StartContext.Provider>
       </BreakContext.Provider>
       </MinutesContext.Provider>
-      </Box>
+
     )
 }
 

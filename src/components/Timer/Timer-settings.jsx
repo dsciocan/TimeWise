@@ -8,6 +8,7 @@ import Form from 'react-bootstrap/Form';
 import RangeSlider from 'react-bootstrap-range-slider';
 import { set } from "date-fns";
 import { BreakContext, MinutesContext, StartContext, SecondsContext } from "./Timer";
+import "./timer-settings.css"
 
 
 function Settings(props) {
@@ -18,7 +19,6 @@ function Settings(props) {
     const [sessionCounter, setSessionCounter] = useState(0) 
     const [name, setName] = useState()
     const [newSession, setNewSession] = useState(false)
-    let sessionId = 0
 
     const [ minutes, setMinutes] = useContext(MinutesContext)
     const seconds = useContext(SecondsContext);
@@ -38,15 +38,16 @@ const changeMinutes = (e) => {
         e.preventDefault()
         setMinutes(workValue)
         setNewSession(true)
-        sessionId++
+        const id = parseInt(localStorage.getItem('id')) || 0;
+        const newId = id + 1
+        localStorage.setItem('id', newId)
         const sessionHistory = JSON.parse(localStorage.getItem('savedSessions')) || [];
         const session = {
-            id: sessionId,
+            id: id + 1,
             name: name,
             sessions: sessionNo
         }
             sessionHistory.push(session)
-            console.log(sessionHistory)
             localStorage.setItem('savedSessions', JSON.stringify(sessionHistory))
     }
 
@@ -59,8 +60,6 @@ useEffect(() => {
         } else {
             setMinutes(breakValue)
             setSessionCounter(sessionCounter => sessionCounter + 1)
-            console.log(sessionCounter)
-            console.log(sessionNo)
         }
 }, [focusMode])
 
@@ -78,7 +77,7 @@ useEffect(() => {
 
     <Modal {...props} aria-labelledby="contained-modal-title-vcenter">
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
+        <Modal.Title class="settings-title" id="contained-modal-title-vcenter">
             Timer Settings
         </Modal.Title>
       </Modal.Header>
@@ -87,38 +86,38 @@ useEffect(() => {
         <Container>
           <Row>
             <Col>
-                <Form.Label>Session Name/Summary</Form.Label>
+                <Form.Label className="settings-text">Session Name/Summary</Form.Label>
                 <Form.Control as="textarea" rows={3} value={name}  onChange={e => setName(e.target.value)}/>
             </Col>
           </Row>
           <Row>
             <Col xs={12} md={8}>
-            <Form.Label>Work Session Time (minutes)</Form.Label>
+            <Form.Label className="settings-text">Work Session Time (minutes)</Form.Label>
             <RangeSlider min={20} max={30} value={workValue}  onChange={e => setWorkValue(e.target.value)} tooltip='auto'/>
             </Col>
           </Row>
           <Row>
             <Col xs={12} md={8}>
-            <Form.Label>Break Time (minutes)</Form.Label>
+            <Form.Label className="settings-text">Break Time (minutes)</Form.Label>
             <RangeSlider min={3} max={7} value={breakValue}  onChange={e => setBreakValue(e.target.value)} tooltip='auto'/>
             </Col>
           </Row>
           <Row>
             <Col xs={12} md={8}>
-            <Form.Label>Number of Sessions</Form.Label>
+            <Form.Label className="settings-text">Number of Sessions</Form.Label>
             <RangeSlider min={1} max={4} value={sessionNo}  onChange={e => setSessionNo(e.target.value)} tooltip='auto'/>
             </Col>
             <Col xs={12} md={4}>
-                {sessionNo == 4 ? <p>15 minute break included</p> : <p></p>}
+                {sessionNo == 4 ? <p className="settings-text">15 minute break included</p> : <p></p>}
             </Col>
           </Row>
         </Container>
       </Modal.Body>
       <Modal.Footer>
-      <Button variant="contained" type="submit" onClick={props.onHide}>
+      <Button className="settings-button" variant="contained" type="submit" onClick={props.onHide}>
              Save
           </Button>
-        <Button variant="contained" onClick={props.onHide}>Close</Button>
+        <Button className="settings-button" variant="contained" onClick={props.onHide}>Close</Button>
       </Modal.Footer>
       </Form >
     </Modal>

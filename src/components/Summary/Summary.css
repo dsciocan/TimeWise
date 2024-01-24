@@ -1,0 +1,44 @@
+#summary-title {
+    color: rgb(0, 18, 103);
+    font-weight: 400;
+    font-size: 43px;
+}
+
+.summary {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: white;
+    padding: 30px;
+    margin-bottom: 40px;
+    padding-left:30px;
+}
+
+#summary-events {
+    color: rgb(0, 18, 103);
+    font-weight: 350;
+    font-size: 25px;
+    margin: 30px
+}
+
+#summary-misc {
+    padding-left: 5%;
+}
+
+#summary-misc h4{
+    margin: 30px;
+    color: rgb(0, 18, 103);
+    font-weight: 500;
+    font-size: 30px;
+}
+
+#summary-misc p {
+    color: rgb(0, 18, 103);
+    font-weight: 350;
+    font-size: 25px;
+}
+
+
+@media only screen and (max-width: 500px) {
+    #summary-title {
+        font-size: 35px;
+    }
+}
