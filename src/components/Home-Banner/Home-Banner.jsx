@@ -12,9 +12,9 @@ function HomeBanner() {
             </div>
             <div className="overflow-hidden d-flex justify-content-evenly">
                 <div className="row">
-                <HomeCard img="./Timer.jpg" title="Pomodoro Timer" desc="Stop procrastinating, start the timer and structure your work/study sessions and breaks" link="Timer"/>
-                <HomeCard img="./Notes.jpg" title="Notes Storage" desc="The perfect place to store your thoughts and ideas before they slip your mind" link="Notes"/>
-                <HomeCard img="./Calendar.jpg" title="Event Calendar" desc="View your schedule, set daily tasks and reminders, and never miss another meeting" link="Calendar"/>
+                <HomeCard img="./Timer.jpg" title="Pomodoro Timer" desc="Stop procrastinating, start the timer and structure your work/study sessions and breaks"/>
+                <HomeCard img="./Notes.jpg" title="Notes Storage" desc="The perfect place to store your thoughts and ideas before they slip your mind"/>
+                <HomeCard img="./Calendar.jpg" title="Event Calendar" desc="View your schedule, set daily tasks and reminders, and never miss another meeting"/>
                 </div>
             </div>
         </div>
