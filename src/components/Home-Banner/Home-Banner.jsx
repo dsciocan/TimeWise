@@ -6,9 +6,9 @@ function HomeBanner() {
     return (
         <div className="container-fluid">
         <div className=" pt-5 my-5 text-center home-banner">
-            <h1 className="display-4">Get productive today with Name</h1>
+            <h1 className="display-4">Get productive today with TimeWise</h1>
             <div className="col-lg-8 mx-auto">
-            <p className="lead mb-5 banner-desc">Welcome to Name, your best friend when it comes to planning and productivity! Start planning or get working with one of the features below:</p>
+            <p className="lead mb-5 banner-desc">Welcome to TimeWise, your best friend when it comes to planning and productivity! Start planning or get working with one of the features below:</p>
             </div>
             <div className="overflow-hidden d-flex justify-content-evenly">
                 <div className="row">

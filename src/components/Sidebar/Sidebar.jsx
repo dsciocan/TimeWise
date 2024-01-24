@@ -13,16 +13,21 @@ import "./Sidebar.css"
 
 function SidebarMain () {
   const [collapsed, setCollapsed] = useState(false);
+
 return(
-<div className="container-fluid" style={{ display: 'flex', height: '100%', minHeight: '1000px'}}>
-<Sidebar className="sidebar" collapsed={collapsed} rootStyles={{
-          background:'linear-gradient(180deg,  #258EB2 20%, rgb(26, 78, 186) 50%, rgb(0, 18, 103) 100%)',}}>
+<div className="container-fluid" style={{ display: 'flex', height: '100vh', minHeight: '1000px'}}>
+<Sidebar className="sidebar" collapsed={collapsed} width="15vw" rootStyles={{
+          background:'linear-gradient(180deg,  #258EB2 20%, rgb(26, 78, 186) 50%, rgb(0, 18, 103) 100%)'}}>
 <Button id="side-button" size="large" variant="outlined" color="primary" onClick={() => setCollapsed(!collapsed)}>
 <GiHamburgerMenu />
 </Button>
-<div> 
-    <h1>Productivity App</h1>
+{collapsed ? <div className='app-name-collapsed'> 
+    <img src="./Logo.png"/>
+</div> : <div className='app-name'> 
+<img src="./Logo.png"/>
 </div>
+}
+
   <Menu className="sidebar-menu">
   <NavLink
           to="/"

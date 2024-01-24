@@ -18,7 +18,7 @@ const Footer = () => {
         </Row>
         <Row className="mt-3">
           <Col className="text-center">
-            <p>&copy; 2024 Datum</p>
+            <p>&copy; 2024 TimeWise</p>
           </Col>
         </Row>
       </Container>
