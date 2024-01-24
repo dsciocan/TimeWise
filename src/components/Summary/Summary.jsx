@@ -16,7 +16,7 @@ useEffect(() =>{
       axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=0197cf67ab7a13595738a77d2d43edd2`)
       .then(function (response) {
         const dataPath = response.data
-        const celsus = Math.round(dataPath.main.temp - 273 + 4)
+        const celsus = Math.round(dataPath.main.temp - 273)
         setWeather({icon: `https://openweathermap.org/img/wn/${dataPath.weather[0].icon}@2x.png`, temperature: celsus})
       })
       .catch(function (error) {
