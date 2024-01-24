@@ -1,6 +1,5 @@
 import React from "react";
 import Card from 'react-bootstrap/Card';
-import Timer from "../Timer/Timer";
 import "./card.css"
 
 

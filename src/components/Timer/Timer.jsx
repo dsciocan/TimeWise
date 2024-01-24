@@ -25,9 +25,6 @@ function Timer() {
     const [study, setStudy] = useState(true);
     const [modalShow, setModalShow] = useState(false);
 
-    
-    let defaultBreakMinutes = 5;
-    let defaultBreakSeconds = 0;
 
     function togglePlay() {
         setPause(!pause)
