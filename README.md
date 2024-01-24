@@ -1,4 +1,4 @@
-# Datum ** update this **
+# TimeWise
 
 Datum becomes your trusted companion, making your workdays a breeze as it effortlessly helps you organise, create, and stay focused. It's like having a productivity sidekick that understands your needs and enhances your daily grind.
 
