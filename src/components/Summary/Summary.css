@@ -35,3 +35,10 @@
     font-weight: 350;
     font-size: 25px;
 }
+
+
+@media only screen and (max-width: 500px) {
+    #summary-title {
+        font-size: 35px;
+    }
+}
