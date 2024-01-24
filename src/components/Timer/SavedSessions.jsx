@@ -7,15 +7,26 @@ import { BreakContext } from "./Timer";
 
 function SavedSessions() {
 
-const [displaySessions, setDisplaySessions] = useState([])
+// const [displaySessions, setDisplaySessions] = useState([ ])
 const study = useContext(BreakContext)
+const displaySessions = []
 
-useEffect(() => {
+// useEffect(() => {
         const savedSessions = JSON.parse(localStorage.getItem('savedSessions'))
-         setDisplaySessions(savedSessions.map(el => {
-            <li>Number: {el.id}       Sessions: {el.sessions}        Summary: {el.name}</li>
-}))
-}, [study])
+        console.log(savedSessions)
+        //  setDisplaySessions(savedSessions.map(el => {
+        //     <li>Number: {el.id}       Sessions: {el.sessions}        Summary: {el.name}</li>
+        if(savedSessions != null) { 
+        savedSessions.forEach((el) => {
+          displaySessions.push(
+            <li>{el.id}.       Sessions: {el.sessions}        Summary: {el.name}</li>
+          )
+
+})
+        }
+// }, [study])
+
+console.log(displaySessions)
 
     return(
         <Accordion>

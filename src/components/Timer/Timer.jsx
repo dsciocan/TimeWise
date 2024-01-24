@@ -80,13 +80,14 @@ function Timer() {
 
 
     return (
-      <Box display={"flex"}
-      flexDirection={"row"}
-      justifyContent={"center"}>
+
       <MinutesContext.Provider value={[minutes, setMinutes]}>
       <BreakContext.Provider value={study}>
       <StartContext.Provider value={[startTimer, setStartTimer]}>
       <SecondsContext.Provider value={[seconds, setSeconds]}>
+      <Box display={"flex"}
+      flexDirection={"row"}
+      justifyContent={"center"}>
         <Box display={"flex"} flexDirection={"column"} justifyContent={"center"}>
         <h2>Pomodoro Timer</h2>
         <h4>Press <FaPlay /> to start </h4>
@@ -103,15 +104,16 @@ function Timer() {
           <IconButton aria-label="settings" color="primary" onClick={() => setModalShow(true)}><IoMdSettings /></IconButton>
           <Settings show={modalShow} onHide={() => setModalShow(false)} />
         </Box>
+      </Box>      
       </Box>
       <Box>
-      {/* <SavedSessions/> */}
+      <SavedSessions/>
       </Box>
       </SecondsContext.Provider>
       </StartContext.Provider>
       </BreakContext.Provider>
       </MinutesContext.Provider>
-      </Box>
+
     )
 }
 

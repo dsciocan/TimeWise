@@ -18,7 +18,6 @@ function Settings(props) {
     const [sessionCounter, setSessionCounter] = useState(0) 
     const [name, setName] = useState()
     const [newSession, setNewSession] = useState(false)
-    let sessionId = 0
 
     const [ minutes, setMinutes] = useContext(MinutesContext)
     const seconds = useContext(SecondsContext);
@@ -38,10 +37,11 @@ const changeMinutes = (e) => {
         e.preventDefault()
         setMinutes(workValue)
         setNewSession(true)
-        sessionId++
+        const id = localStorage.getItem('id') || 0;
+        localStorage.setItem('id', id + 1)
         const sessionHistory = JSON.parse(localStorage.getItem('savedSessions')) || [];
         const session = {
-            id: sessionId,
+            id: id + 1,
             name: name,
             sessions: sessionNo
         }
