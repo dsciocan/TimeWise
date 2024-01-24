@@ -25,8 +25,66 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.app-name-collapsed img{
+ width: 18vw;
+}
+
+.app-name img {
+    width: 15vw;
+
+}
+
 @media only screen and (min-height: 1500px) {
     .sidebar {
         min-height: 2000px;
     }
+    
+}
+
+
+
+@media only screen and (max-width: 1300px) {
+    .sidebar {
+        max-width: 100px;
+    }
+    .app-name-collapsed h1 {
+        font-size: 30px;
+    }
+    .app-name-collapsed img{
+        width: 31vw;
+       }
+       
+       .app-name img {
+           width: 15vw;
+       
+       }
+       
+}
+
+@media only screen and (max-width: 800px) {
+    .sidebar h1 {
+        font-size: 20px;
+    }
+    .app-name-collapsed img{
+        width: 57vw;
+       }
+       
+       .app-name img {
+        width: 58vw;
+       
+       }
+}
+
+@media only screen and (max-width: 500px) {
+    .sidebar h1 {
+        font-size: 20px;
+    }
+    .app-name-collapsed img{
+        width: 67vw;
+       }
+       
+       .app-name img {
+        width: 60vw;
+       
+       }
 }
