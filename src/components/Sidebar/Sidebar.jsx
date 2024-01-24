@@ -1,23 +1,34 @@
-import React from 'react';
+import { React, useState} from 'react';
 import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import { NavLink } from 'react-router-dom';
 import { MdOutlineTimer } from "react-icons/md";
 import { FaNoteSticky } from "react-icons/fa6";
 import { FaCalendarCheck } from "react-icons/fa";
 import { IoHome } from "react-icons/io5";
+import { Button } from '@mui/material';
+import { GiHamburgerMenu } from "react-icons/gi";
+import "./Sidebar.css"
+
+
+
+
 
 
 
 
 function SidebarMain () {
-
+  const [collapsed, setCollapsed] = useState(false);
 return(
 <div className="container-fluid" style={{ display: 'flex', height: '100%', minHeight: '800px'}}>
-<Sidebar>
+<Sidebar className="sidebar" collapsed={collapsed} rootStyles={{
+          background:'linear-gradient(180deg,  #258EB2 20%, rgb(26, 78, 186) 50%, rgb(0, 18, 103) 100%)',}}>
+<Button id="side-button" size="large" variant="outlined" color="primary" onClick={() => setCollapsed(!collapsed)}>
+<GiHamburgerMenu />
+</Button>
 <div> 
     <h1>Productivity App</h1>
 </div>
-  <Menu>
+  <Menu className="sidebar-menu">
   <NavLink
           to="/"
           end
@@ -25,7 +36,7 @@ return(
             isActive ? 'nav-link active' : 'nav-link'
           }
         >
-    <MenuItem> <IoHome /> Home 
+    <MenuItem className="menu-item"> <IoHome /> Home 
      </MenuItem>
      </NavLink>
      <NavLink
@@ -34,7 +45,7 @@ return(
             isActive ? 'nav-link active' : 'nav-link'
           }
         >
-    <MenuItem>
+    <MenuItem className="menu-item">
     <MdOutlineTimer /> Timer
     </MenuItem>
     </NavLink>
@@ -44,7 +55,7 @@ return(
             isActive ? 'nav-link active' : 'nav-link'
           }
         >
-    <MenuItem><FaNoteSticky /> Notes </MenuItem>
+    <MenuItem className="menu-item"><FaNoteSticky /> Notes </MenuItem>
     </NavLink>
     <NavLink
           to="calendar"
@@ -52,11 +63,12 @@ return(
             isActive ? 'nav-link active' : 'nav-link'
           }
         >
-    <MenuItem> <FaCalendarCheck /> Calendar </MenuItem>
+    <MenuItem className="menu-item"> <FaCalendarCheck /> Calendar </MenuItem>
     </NavLink>
   </Menu>
 </Sidebar>
 </div>
+
 )
 }
 
