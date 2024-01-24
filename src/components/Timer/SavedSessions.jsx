@@ -7,15 +7,10 @@ import "./saved-sessions.css"
 
 function SavedSessions() {
 
-// const [displaySessions, setDisplaySessions] = useState([ ])
 const study = useContext(BreakContext)
 const displaySessions = []
 
-// useEffect(() => {
         const savedSessions = JSON.parse(localStorage.getItem('savedSessions'))
-        console.log(savedSessions)
-        //  setDisplaySessions(savedSessions.map(el => {
-        //     <li>Number: {el.id}       Sessions: {el.sessions}        Summary: {el.name}</li>
         if(savedSessions != null) { 
         savedSessions.forEach((el) => {
           displaySessions.push(
@@ -25,14 +20,10 @@ const displaySessions = []
                 <td>{el.name}</td>
               </tr>
 
-            // <li className="history-items">{el.id}.      Sessions:     |    Summary: </li>
           )
 
 })
         }
-// }, [study])
-
-console.log(displaySessions)
 
     return(
         <Accordion>

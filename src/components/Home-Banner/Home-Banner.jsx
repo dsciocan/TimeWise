@@ -5,7 +5,7 @@ import "./Home-Banner.css"
 function HomeBanner() {
     return (
         <div className="container-fluid">
-        <div className="px-4 pt-5 my-5 text-center home-banner">
+        <div className=" pt-5 my-5 text-center home-banner">
             <h1 className="display-4">Get productive today with Name</h1>
             <div className="col-lg-8 mx-auto">
             <p className="lead mb-5 banner-desc">Welcome to Name, your best friend when it comes to planning and productivity! Start planning or get working with one of the features below:</p>
