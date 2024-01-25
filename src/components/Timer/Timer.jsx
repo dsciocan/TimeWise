@@ -13,6 +13,7 @@ export const MinutesContext = createContext();
 export const BreakContext = createContext();
 export const StartContext = createContext();
 export const SecondsContext = createContext();
+export const PauseContext = createContext();
 
 function Timer() {
     let startingMinutes = 25
@@ -73,6 +74,7 @@ function Timer() {
       <BreakContext.Provider value={study}>
       <StartContext.Provider value={[startTimer, setStartTimer]}>
       <SecondsContext.Provider value={[seconds, setSeconds]}>
+      <PauseContext.Provider value={[pause, setPause]}>
       <Box display={"flex"}
       flexDirection={"row"}
       justifyContent={"center"}>
@@ -99,6 +101,7 @@ function Timer() {
       justifyContent={"center"} className="saved-sessions">
       <SavedSessions/>
       </Box>
+      </PauseContext.Provider>
       </SecondsContext.Provider>
       </StartContext.Provider>
       </BreakContext.Provider>

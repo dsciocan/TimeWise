@@ -7,7 +7,7 @@ import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
 import RangeSlider from 'react-bootstrap-range-slider';
 import { set } from "date-fns";
-import { BreakContext, MinutesContext, StartContext, SecondsContext } from "./Timer";
+import { BreakContext, MinutesContext, StartContext, SecondsContext, PauseContext } from "./Timer";
 import "./timer-settings.css"
 
 
@@ -21,9 +21,10 @@ function Settings(props) {
     const [newSession, setNewSession] = useState(false)
 
     const [ minutes, setMinutes] = useContext(MinutesContext)
-    const seconds = useContext(SecondsContext);
+    const [seconds, setSeconds] = useContext(SecondsContext);
     const focusMode = useContext(BreakContext)
     const [startTimer, setStartTimer] = useContext(StartContext)
+    const [pause, setPause] = useContext(PauseContext)
 
 
     useEffect(() => {
@@ -37,7 +38,10 @@ function Settings(props) {
 const changeMinutes = (e) => {
         e.preventDefault()
         setMinutes(workValue)
+        setSeconds(0)
         setNewSession(true)
+        setPause(true)
+        setStartTimer(false)
         const id = parseInt(localStorage.getItem('id')) || 0;
         const newId = id + 1
         localStorage.setItem('id', newId)
