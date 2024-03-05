@@ -1,24 +1,28 @@
 import React from "react";
-import { Modal, Button } from "react-bootstrap";
-
+import { Modal} from "react-bootstrap";
+import { Button } from "@mui/material";
+import "./Options.css"
 
 
 export default function EventOptions(props) {
 const eventList = JSON.parse(localStorage.getItem('events')) || [];
 
 return (
-<Modal size="sm" {...props}>          
+<Modal {...props}>          
         <Modal.Header closeButton>
-          <Modal.Title>Event Options</Modal.Title>
+          <Modal.Title className="title">{props.name} - Options</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <p>Would you like to delete this event?</p>
-        <Button 
+        <p className="text-center">Would you like to delete this event?</p>
+        <div  className="d-flex justify-content-center">
+        <Button className="delete-button"
+        variant="contained" type="submit"
         onClick={props.button}
         > Delete </Button>
+        </div>
               </Modal.Body>
               <Modal.Footer>
-              <Button variant="secondary" onClick={props.onHide}>Close</Button>
+              <Button variant="outlined" type="submit" onClick={props.onHide}>Close</Button>
             </Modal.Footer>
         </Modal>
 )

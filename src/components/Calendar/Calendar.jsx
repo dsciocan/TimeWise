@@ -10,8 +10,7 @@ import "./Calendar.css"
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-
-import Button from 'react-bootstrap/Button';
+import { Button } from '@mui/material';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import { setMonth, startOfDay } from 'date-fns';
@@ -23,15 +22,14 @@ import { EventImpl } from '@fullcalendar/core/internal';
 import * as bootstrap from "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-// import { Popover, Typography, Button } from '@mui/material';
 
 import EventOptions from './EventOptions';
 
 // adding views and changing size
 function Calendars() {
     // adding event feature
-    // const [eventList, setEventList] = useState();
     const [eventName, setEventName] = useState();
+    const [currentEvent, setCurrentEvent] = useState()
     const [modalShow, setModalShow] = useState(false);
     const [startDate, setStartDate] = useState(new Date());;
     const [endDate, setEndDate] = useState(new Date());
@@ -42,20 +40,11 @@ function Calendars() {
     const handleClose = () => setModalShow(false);
     let eventList = JSON.parse(localStorage.getItem('events')) || []
     const handleSelect = () => {
-          // setEvents([
-          //   ...events,
-          //   {
-          //     start: startDate,
-          //     end: endDate,
-          //     title: eventName,
-          //     id: uuid(),
-          //   },
-          // ]);
           eventList = JSON.parse(localStorage.getItem('events')) || []
           console.log(eventList)
           eventList.push( {
-              start: startDate.toISOString().replace(/T.*$/, ''),
-              end: endDate.toISOString().replace(/T.*$/, ''),
+              start: startDate.toISOString(),
+              end: endDate.toISOString(),
               startStr:startDate.toISOString(),
               endStr: endDate.toISOString(),
               title: eventName,
@@ -69,37 +58,13 @@ function Calendars() {
         modalBody.append(saveText)
       };
 
-      // const showEvents = () => {
-      //   eventList = JSON.parse(localStorage.getItem('events')) || []
-      //   return (eventList)
-      // }
-
-      // const dateValidation = (date) => {
-      //   if(date < startDate) {
-      //     setEndDate(startDate)
-      //     return(<p>End Date cannot be set before Start Date</p>)
-      //   } else {
-      //     setEndDate(date)
-      //   }
-      // }
-// useEffect(() => {
-//   JSON.parse(localStorage.getItem('events'))
-// }, eventList)
-
       const newEvent = () => {
         setModalShow(true)
       }
 
       (info) => {
         console.log(info)
-    //    
-    // const deletedId = info.event._def.publicId
-    // info.event.remove();
-    // eventList = JSON.parse(localStorage.getItem('events')) || [];
-    // const newEventList = eventList.filter((entry) => entry.id != deletedId)
-    // console.log(newEventList)
-    // localStorage.setItem('events', JSON.stringify(newEventList))
-    // }
+
 }
 
       const handleEventDelete = (info, id) => {
@@ -123,31 +88,8 @@ function Calendars() {
               console.log(info)
               setBaseEvent(info.event)
               setEventId(info.event._def.publicId)
+              setCurrentEvent(info.event._def.title)
               setDelShow(true)
-              // return new bootstrap.Popover(info.el, {
-              //   title: info.event.title,
-              //   placement: "auto",
-              //   trigger: "hover",
-              //   customClass: "popoverStyle",
-              //   content:
-              //     `<p>Please subscribe<strong>Bootstrap popover</strong>.</p>
-              //     ${<Button onClick={handleEventDelete(info)}> Delete </Button>}`,
-              //   html: true,
-              // })
-              // return <Popover
-              // id={info.event._def.publicId}
-              // open={open}
-              // onClose={handleClose}
-              // anchorEl={info.el}
-              // anchorOrigin={{
-              //   vertical: 'bottom',
-              //   horizontal: 'left',
-              // }}
-            // >
-            //   <Typography sx={{ p: 2 }}>Would you like to delete this event?</Typography>
-            //   {/* <Button onClick={handleEventDelete(info)}> Delete </Button> */}
-            // </Popover>
-            //   }}
             }}
             navLinks={true}
             plugins={[daygridPlugin, timeGridPlugin,interactionPlugin]}
@@ -162,7 +104,6 @@ function Calendars() {
               addEventButton: {
                 text: 'New Event',
                 click: newEvent}}}
-            //  dateClick={handleShow}
              height={650}
              aspectRatio={6}
             
@@ -172,12 +113,12 @@ function Calendars() {
         <Modal show={modalShow} onHide={handleClose}>
           <Modal.Dialog>
             <Modal.Header closeButton>
-              <Modal.Title>New Event</Modal.Title>
+              <Modal.Title id="modal-title">New Event</Modal.Title>
             </Modal.Header>
     
             <Modal.Body id='modalBody'>
-            <InputGroup>
-            <Form.Label htmlFor="newEvent">Event Name</Form.Label>
+            <InputGroup className='ig'>
+            <Form.Label className='form-label' htmlFor="newEvent">Event Name</Form.Label>
             <Form.Control
               type="event"
               id="newEvent"
@@ -185,13 +126,13 @@ function Calendars() {
             />
             </InputGroup>
 
-            <InputGroup>
-            <FormLabel htmlFor="startDate">Start Date</FormLabel>
+            <InputGroup className='ig'>
+            <Form.Label htmlFor="startDate" className='form-label'>Start Date</Form.Label>
             <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} timeInputLabel="Time:" dateFormat="MM/dd/yyyy hh:mm aa" showTimeInput/>
             </InputGroup>
             
-            <InputGroup>
-            <FormLabel htmlFor="endDate">End Date</FormLabel>
+            <InputGroup className='ig'>
+            <Form.Label className='form-label' htmlFor="endDate">End Date</Form.Label>
             <DatePicker selected={endDate} onChange={(date) => {
               if(date < startDate) {
                 setEndDate(startDate)
@@ -199,12 +140,12 @@ function Calendars() {
                 setEndDate(date)
                 }}} timeInputLabel="Time:" dateFormat="MM/dd/yyyy hh:mm aa" showTimeInput/>
             </InputGroup>
-            {endDate == startDate ? <p>Note: End Date cannot be set before Start Date</p> : <p></p>}
+            {endDate <= startDate ? <p>Note: End Date cannot be set before Start Date</p> : <p></p>}
             </Modal.Body>
     
             <Modal.Footer>
-              <Button variant="primary" onClick={handleSelect}>Save</Button>
-              <Button variant="secondary" onClick={handleClose}>Close</Button>
+              <Button className='modal-button' variant="contained" onClick={handleSelect}>Save</Button>
+              <Button variant="outlined" onClick={handleClose}>Close</Button>
             </Modal.Footer>
           </Modal.Dialog>
         </Modal>
@@ -214,28 +155,8 @@ function Calendars() {
           <EventOptions show={delShow} onHide={() => setDelShow(false)} button={(e) => {
             e.stopPropagation();
             handleEventDelete(baseEvent, eventId)
-          }}/>
+          }} name={currentEvent}/>
         </div>
-           {/* <Modal size="sm" show={delShow} onHide={() => setDelShow(false)}>          
-        <Modal.Header closeButton>
-          <Modal.Title>Event Options</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-        <p>Would you like to delete this event?</p>
-        <Button onClick={(info) => {
-        const deletedId = info.event._def.publicId
-        info.event.remove();
-        eventList = JSON.parse(localStorage.getItem('events')) || [];
-        const newEventList = eventList.filter((entry) => entry.id != deletedId)
-        console.log(newEventList)
-        localStorage.setItem('events', JSON.stringify(newEventList))
-        }}> Delete </Button>
-              </Modal.Body>
-              <Modal.Footer>
-              <Button variant="secondary" onClick={setDelShow(false)}>Close</Button>
-            </Modal.Footer>
-        </Modal>
-        </div> */}
     </>
 
         

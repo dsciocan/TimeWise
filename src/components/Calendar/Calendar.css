@@ -1,3 +1,22 @@
-.MuiPopover-root {
-    z-index: 9999 !important;
+#modal-title {
+    color: rgb(0, 18, 103);
+    font-weight: 500;
+    font-size: 25px;
+}
+
+.form-label {
+    color: rgb(0, 18, 103);
+    font-size: 18px;
+    margin-right: 20px;
+    font-weight: 450;
+}
+
+
+.ig {
+    margin-bottom: 10px;
+}
+
+.modal-button {
+    background-color: rgb(0, 18, 103) !important;
+    margin: 10px !important;
 }
