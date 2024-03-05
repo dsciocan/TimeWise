@@ -5,6 +5,7 @@ import timeGridPlugin from "@fullcalendar/timegrid"
 import interactionPlugin from "@fullcalendar/interaction";
 import { useState, useEffect } from "react";
 import { v4 as uuid } from "uuid"
+import "./Calendar.css"
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -19,7 +20,12 @@ import { FormLabel, InputGroup } from 'react-bootstrap';
 import events from '../../events.json'
 import { EventImpl } from '@fullcalendar/core/internal';
 
+import * as bootstrap from "bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
+// import { Popover, Typography, Button } from '@mui/material';
+
+import EventOptions from './EventOptions';
 
 // adding views and changing size
 function Calendars() {
@@ -29,6 +35,9 @@ function Calendars() {
     const [modalShow, setModalShow] = useState(false);
     const [startDate, setStartDate] = useState(new Date());;
     const [endDate, setEndDate] = useState(new Date());
+    const [delShow, setDelShow] = useState(false)
+    const [baseEvent, setBaseEvent] = useState()
+    const [eventId, setEventId] = useState()
     const handleShow = () => setModalShow(true)
     const handleClose = () => setModalShow(false);
     let eventList = JSON.parse(localStorage.getItem('events')) || []
@@ -81,12 +90,65 @@ function Calendars() {
         setModalShow(true)
       }
 
+      (info) => {
+        console.log(info)
+    //    
+    // const deletedId = info.event._def.publicId
+    // info.event.remove();
+    // eventList = JSON.parse(localStorage.getItem('events')) || [];
+    // const newEventList = eventList.filter((entry) => entry.id != deletedId)
+    // console.log(newEventList)
+    // localStorage.setItem('events', JSON.stringify(newEventList))
+    // }
+}
+
+      const handleEventDelete = (info, id) => {
+        if(info) {
+        info.remove();
+        eventList = JSON.parse(localStorage.getItem('events')) || [];
+        const newEventList = eventList.filter((entry) => entry.id != id)
+        console.log(newEventList)
+        localStorage.setItem('events', JSON.stringify(newEventList))
+      }
+    }
+
     return (
+      <>
         <div id='full-calendar'>
             <FullCalendar 
             editable
             selectable
             events={eventList}
+            eventClick={(info) => {
+              console.log(info)
+              setBaseEvent(info.event)
+              setEventId(info.event._def.publicId)
+              setDelShow(true)
+              // return new bootstrap.Popover(info.el, {
+              //   title: info.event.title,
+              //   placement: "auto",
+              //   trigger: "hover",
+              //   customClass: "popoverStyle",
+              //   content:
+              //     `<p>Please subscribe<strong>Bootstrap popover</strong>.</p>
+              //     ${<Button onClick={handleEventDelete(info)}> Delete </Button>}`,
+              //   html: true,
+              // })
+              // return <Popover
+              // id={info.event._def.publicId}
+              // open={open}
+              // onClose={handleClose}
+              // anchorEl={info.el}
+              // anchorOrigin={{
+              //   vertical: 'bottom',
+              //   horizontal: 'left',
+              // }}
+            // >
+            //   <Typography sx={{ p: 2 }}>Would you like to delete this event?</Typography>
+            //   {/* <Button onClick={handleEventDelete(info)}> Delete </Button> */}
+            // </Popover>
+            //   }}
+            }}
             navLinks={true}
             plugins={[daygridPlugin, timeGridPlugin,interactionPlugin]}
              initialView='dayGridMonth'
@@ -107,8 +169,7 @@ function Calendars() {
              
             />
 
-
-<Modal show={modalShow} onHide={handleClose}>
+        <Modal show={modalShow} onHide={handleClose}>
           <Modal.Dialog>
             <Modal.Header closeButton>
               <Modal.Title>New Event</Modal.Title>
@@ -148,6 +209,34 @@ function Calendars() {
           </Modal.Dialog>
         </Modal>
         </div>
+
+        <div>
+          <EventOptions show={delShow} onHide={() => setDelShow(false)} button={(e) => {
+            e.stopPropagation();
+            handleEventDelete(baseEvent, eventId)
+          }}/>
+        </div>
+           {/* <Modal size="sm" show={delShow} onHide={() => setDelShow(false)}>          
+        <Modal.Header closeButton>
+          <Modal.Title>Event Options</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+        <p>Would you like to delete this event?</p>
+        <Button onClick={(info) => {
+        const deletedId = info.event._def.publicId
+        info.event.remove();
+        eventList = JSON.parse(localStorage.getItem('events')) || [];
+        const newEventList = eventList.filter((entry) => entry.id != deletedId)
+        console.log(newEventList)
+        localStorage.setItem('events', JSON.stringify(newEventList))
+        }}> Delete </Button>
+              </Modal.Body>
+              <Modal.Footer>
+              <Button variant="secondary" onClick={setDelShow(false)}>Close</Button>
+            </Modal.Footer>
+        </Modal>
+        </div> */}
+    </>
 
         
     );
