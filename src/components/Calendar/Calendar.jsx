@@ -43,8 +43,8 @@ function Calendars() {
           eventList = JSON.parse(localStorage.getItem('events')) || []
           console.log(eventList)
           eventList.push( {
-              start: startDate.toISOString(),
-              end: endDate.toISOString(),
+              start: startDate,
+              end: endDate,
               startStr:startDate.toISOString(),
               endStr: endDate.toISOString(),
               title: eventName,
@@ -81,11 +81,10 @@ function Calendars() {
       <>
         <div id='full-calendar'>
             <FullCalendar 
-            editable
+            // editable
             selectable
             events={eventList}
             eventClick={(info) => {
-              console.log(info)
               setBaseEvent(info.event)
               setEventId(info.event._def.publicId)
               setCurrentEvent(info.event._def.title)

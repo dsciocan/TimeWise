@@ -39,8 +39,9 @@ useEffect(() =>{
 
   const eventList = JSON.parse(localStorage.getItem('events')) || [];
   let events;
-      const todayEvents = eventList.filter((event) => isToday(event.start))
-      console.log(todayEvents)
+  let today = new Date()
+  console.log(today)
+      const todayEvents = eventList.filter((event) => today.toISOString()>=event.start && today.toISOString()<= event.end)
       if(todayEvents.length > 0) {
       events = todayEvents.map((event) => <ListGroupItem>
         <div className='row event-li'>
