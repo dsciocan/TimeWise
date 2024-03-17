@@ -1,6 +1,8 @@
 import { React, useState, useEffect} from 'react';
 import axios from 'axios';
 import "./Summary.css"
+import { isToday } from 'date-fns';
+import { ListGroup, ListGroupItem } from 'react-bootstrap';
 
 function Summary() {
   const [weather, setWeather] = useState({icon: "" , temperature: ""})
@@ -27,11 +29,33 @@ useEffect(() =>{
     }
 
 
+
+
     function error () {
       setSuccessGet(false)
       return <p>Permission required to show weather</p>
     }
   }, [])
+
+  const eventList = JSON.parse(localStorage.getItem('events')) || [];
+  let events;
+  let today = new Date()
+  console.log(today)
+      const todayEvents = eventList.filter((event) => today.toISOString()>=event.start && today.toISOString()<= event.end)
+      if(todayEvents.length > 0) {
+      events = todayEvents.map((event) => <ListGroupItem>
+        <div className='row event-li'>
+        <h5 className='col-lg-5'>
+            {event.title}
+        </h5>
+          <div className="col-lg-3 text-center event-date">Starts: {event.start.slice(0,16).replace("T", ", ")}</div>
+          <div className="col-lg-3 text-center event-date">Ends: {event.end.slice(0,16).replace("T", ", ")}</div>
+        </div>
+      </ListGroupItem>)
+      } else if (todayEvents.length == 0) {
+        events =  <p className='text-center'>No events to show today</p>
+     }
+
 
     function uselessFact() {
       axios.get('https://uselessfacts.jsph.pl/api/v2/facts/today')
@@ -45,11 +69,20 @@ useEffect(() =>{
     uselessFact()
     return (
       <div className='container-fluid summary'>
+        <div className='summary-component'>
         <h1 className="text-center" id="summary-title">Welcome to your personalised corner</h1>
-        <p className='text-center' id="summary-events">
-          Start adding events to your calendar to receive personalised reminders here.
-        </p>
-        <div className='row d-flex justify-content-center' id="summary-misc">
+        {eventList.length == 0 ? 
+
+        <p className='text-center' id="summary-events">Start adding events to your calendar to receive personalised reminders here.</p> 
+        :
+        <ListGroup>
+          <h4 className='text-center'>Today's Events</h4>
+          {events}
+        </ListGroup>
+
+        }
+        </div>
+        <div className='row d-flex justify-content-center summary-component'>
         <div className="col-lg-6 col-sm-12">
           <h4>Today's Useless Fact</h4>
           <p>{fact}</p>

@@ -19,21 +19,34 @@
     margin: 30px
 }
 
-#summary-misc {
+.summary-component {
     padding-left: 5%;
 }
 
-#summary-misc h4{
+.summary-component h4{
     margin: 30px;
     color: rgb(0, 18, 103);
     font-weight: 500;
     font-size: 30px;
 }
 
-#summary-misc p {
+.summary-component p {
     color: rgb(0, 18, 103);
     font-weight: 350;
     font-size: 25px;
+}
+
+.event-li h5{
+    margin-left: 40px;
+    color: rgb(0, 18, 103);
+    font-weight: 500;
+    font-size: 23px;
+}
+
+.event-date{
+    color: rgb(0, 18, 103);
+    font-weight: 500;
+    font-size: 17px;
 }
 
 
@@ -42,3 +55,5 @@
         font-size: 35px;
     }
 }
+
+
